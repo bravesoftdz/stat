@@ -15,13 +15,6 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 120
-    Top = 152
-    Width = 31
-    Height = 13
-    Caption = 'Label1'
-  end
   object Memo1: TMemo
     Left = 304
     Top = 64
@@ -47,9 +40,19 @@ object Form1: TForm1
     Height = 19
     Panels = <>
   end
-  object ADODataSet1: TADODataSet
-    Parameters = <>
-    Left = 512
-    Top = 232
+  object RichEdit1: TRichEdit
+    Left = 424
+    Top = 168
+    Width = 185
+    Height = 89
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Lines.Strings = (
+      'RichEdit1')
+    ParentFont = False
+    TabOrder = 3
   end
 end
