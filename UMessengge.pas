@@ -7,16 +7,15 @@ uses
 
 type
   TMessengge = class(TCollectionItem)
-  private
-    Fip: string; {
+  public
+    ip: string; {
       date: string;
       url: string;
       code: string;
       size: string; }
-  public
-    property ip: string read Fip write Fip;
-    constructor Create(Collection: TCollection); override;
-    destructor Destroy; override;
+  //    property ip: string read Fip write Fip;
+    //constructor Create(Collection: TCollection); override;
+    //destructor Destroy; override;
   end;
 
   TMyCollection = class(TCollection)
@@ -46,20 +45,6 @@ end;
 procedure TMyCollection.SetMessengge(Index: Integer; Value: TMessengge);
 begin
   Items[Index].Assign(Value);
-end;
-
-{ TMessengge }
-
-constructor TMessengge.Create(Collection: TCollection);
-begin
-  inherited;
-  Fip := '';
-end;
-
-destructor TMessengge.Destroy;
-begin
-  Fip := '';
-  inherited;
 end;
 
 end.

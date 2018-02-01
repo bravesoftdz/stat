@@ -20,7 +20,8 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
   private
-
+    Collection: TCollection;
+    Oneltem: TMessengge;
   public
     { Public declarations }
   end;
@@ -39,10 +40,14 @@ var
   i: integer;
   reg, reg2, reg3, reg4, reg5: TregExpr;
   //MyCollection: TMyCollection;
-  MyMessengge: TMessengge;
+  //MyMessengge: TCollectionItem;
+
 begin
-  MyMessengge:= TMessengge.Create(nil);
-  //MyCollection:= TCollection.Create(TMyCollection);
+  //MyMessengge:= TMessengge.Create(nil);
+  //MyCollection:= TMyCollection.Create(nil);
+  //MyMessengge:=TCollectionItem.Create(MyMessengge: TMessengge);
+  Collection := TCollection.Create(TMessengge);
+  Oneltem := Collection.Add as TMessengge;
 
   MyStringList := TStringList.Create;
   MyStringList.LoadFromFile('logs.txt');
@@ -65,10 +70,11 @@ begin
     reg4.Expression := '" (.*?) ';
     reg5.Expression := '" 200 (.*?)$';
     if reg.Exec(MyStringList[i]) then
-      repeat
-        Memo1.Lines.add(reg.Match[0]);
-        MyMessengge.ip := reg.Match[0];
-        Memo1.Lines.add(MyMessengge.ip);
+      repeat    //[]_Osnovue_Delphi._Professionalnuei_podhod(BookSee.org)
+        Oneltem := Collection.Insert(i) as TMessengge;
+        Oneltem.ip := reg.Match[0];                    //стр. 153
+        Oneltem := Collection.Items[i] as TMessengge;
+        Memo1.Lines.add(Oneltem.ip);
       until not reg.ExecNext;
     reg.Free;
     reg := nil;
@@ -128,6 +134,7 @@ begin
   finally
     Ini.Free;
   end;
+  Collection.Free;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

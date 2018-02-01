@@ -46,9 +46,6 @@ object Form1: TForm1
     Width = 643
     Height = 19
     Panels = <>
-    ExplicitLeft = 352
-    ExplicitTop = 16
-    ExplicitWidth = 0
   end
   object ADODataSet1: TADODataSet
     Parameters = <>
